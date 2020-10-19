@@ -114,11 +114,23 @@
    </script>    
 </head>
 <body>
-   <div style="padding-top: 10px; text-align: center;">
-      Your ref link:
+   <!-- <div style="padding-top: 10px; text-align: center;">
+      Account ref link:
       <div id="quoteDisplay"></div>
       <button onclick="CopyToClipboard('quoteDisplay')" class="ui button large primary" style="margin-bottom: 20px;">Copy ref link</button>
-   </div>
+      <br>
+      Etherscan link:
+      <div id="quoteDisplay2"></div>
+      <button onclick="CopyToClipboard('quoteDisplay2')" class="ui button large primary" style="margin-bottom: 20px;">Copy etherscan link</button>
+
+   </div> -->
+
+   <div style="padding-top: 10px; text-align: center;">
+                        Account ref link:<div id="quoteDisplay"></div><button onclick="CopyToClipboard('quoteDisplay')" class="ui button large primary" style="margin-bottom: 20px;">Copy referal link</button>
+                        <br>
+                         Etherscan link:<div id="quoteDisplay2"></div><button onclick="CopyToClipboard('quoteDisplay2')" class="ui button large primary" style="margin-bottom: 20px;">Copy Etherscan link</button>
+	</div>
+   
    <script>
       function whenAvailable(name, callback) {
           var interval = 10;
@@ -135,6 +147,8 @@
           if (web3js.eth.accounts[0] !== null) {
               var element = "<a href='https://0x167.github.io/ui/?ref=" + currentAddress + "'>https://0x167.github.io/ui/?ref=" + currentAddress + "</a>";
               $("#quoteDisplay").append(element);
+              var element2 = "<a href='https://etherscan.io/address/" + currentAddress + "'>https://etherscan.io/address/" + currentAddress + "</a>";
+              $("#quoteDisplay2").append(element2);
           }
       
       });

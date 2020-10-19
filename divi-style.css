@@ -176,6 +176,10 @@ body.home .mobile_menu_bar:before{
 #quoteDisplay, #eth-address{
 	word-break: break-word;
 }
+
+#quoteDisplay2, #eth-address{
+	word-break: break-word;
+}
 @media(min-width: 981px) and (max-width: 1399px){
 	.ind-sidebar-footer h4{
 		float: none;
