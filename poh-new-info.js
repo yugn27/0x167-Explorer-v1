@@ -6,9 +6,10 @@ var contractAddress = '0x167cB3F2446F829eb327344b66E271D1a7eFeC9A'
 var donationAddress = '0xda6Ac8E2957612c5995ff1AA48979f0e066C35FF'
 
 // GLOBALS
+var currentAddress = inputUser
 var web3Mode = null
 var walletMode = 'metamask'
-var currentAddress = inputUser
+
 var keystore = null
 var dividendValue = 0
 var tokenBalance = 0
@@ -128,7 +129,7 @@ function generateWallet () {
       $('#wallet-address').html(address)
       $('#seed-dimmer').dimmer('show')
 
-      currentAddress = address
+      currentAddress = inputUser
       walletMode = 'web'
       updateData(contract)
 
@@ -163,7 +164,7 @@ function loadWallet () {
   useWallet(function (pwDerivedKey) {
     try {
       keystore.generateNewAddress(pwDerivedKey, 1)
-      currentAddress = keystore.getAddresses()[0]
+      currentAddress = inputUser
       walletMode = 'web'
       updateData()
     } catch (err) {
@@ -220,7 +221,7 @@ function detectWeb3 () {
   if (typeof web3 !== 'undefined') {
     web3js = new Web3(web3.currentProvider)
     web3Mode = 'metamask'
-    currentAddress = web3js.eth.accounts[0]
+    //currentAddress = web3js.eth.accounts[0]
   } else {
     web3js = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/iAuiwox78xdSQSkLkeXB'))
     web3Mode = 'direct'
@@ -580,7 +581,7 @@ function updateData () {
 
   if (walletMode === 'metamask') {
     loggedIn = typeof web3js.eth.defaultAccount !== 'undefined' && web3js.eth.defaultAccount !== null
-    currentAddress = web3js.eth.defaultAccount
+    //currentAddress = web3js.eth.defaultAccount
     $('#meta-mask-ui').removeClass('wallet-web').addClass('wallet-mm')
   } else if (walletMode === 'web') {
     loggedIn = currentAddress !== null
