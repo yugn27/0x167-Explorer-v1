@@ -603,7 +603,7 @@ function updateData () {
       $('.poh-balance').text(r.div(1e18).toNumber().toLocaleString())
       contract.calculateEthereumReceived(r, function (e, r) {
         let bal = convertWeiToEth(r)
-        $('.poh-value').text(bal.toFixed(4))
+        $('.poh-value').text(bal.toFixed(4)+" ETH")
         $('.poh-value-usd').text(Number((convertWeiToEth(r * 1) * ethPrice).toFixed(2)).toLocaleString() + ' ' + currency + '')
         if (tokenBalance !== 0) {
           if (bal > tokenBalance) {
